@@ -2,6 +2,7 @@
 
 
 
+
 import 'package:flutter/material.dart';
 //import 'package:flutter/widgets.dart';
 import 'package:fontresoft/fontresoft.dart';
@@ -13,6 +14,8 @@ import 'package:wallpaper_app/favoritescreen.dart';
 import 'package:wallpaper_app/homescreen.dart';
 import 'package:wallpaper_app/settingsscreen.dart';
 import 'package:wallpaper_app/global.dart' as global;
+
+import 'global.dart';
 class HomePage extends StatefulWidget {
   const HomePage();
 
@@ -78,7 +81,7 @@ class _HomePageState extends State<HomePage> {
           icon: Icon(Icons.arrow_back_ios),
           onPressed: () {
             setState(() {
-              global.selectedIndex = 0;
+              count.value = 0;
             });
           },
         ),
@@ -98,7 +101,7 @@ class _HomePageState extends State<HomePage> {
           icon: Icon(Icons.arrow_back_ios),
           onPressed: () {
             setState(() {
-              global.selectedIndex = 0;
+              count.value= 0;
             });
           },
         ),
@@ -116,7 +119,7 @@ class _HomePageState extends State<HomePage> {
           icon: Icon(Icons.arrow_back_ios),
           onPressed: () {
             setState(() {
-              global.selectedIndex = 0;
+              count.value = 0;
             });
           },
         ),
@@ -133,17 +136,28 @@ class _HomePageState extends State<HomePage> {
     ];
   }
   @override
+  void didChangeDependencies() {
+    // TODO: implement didChangeDependencies
+    super.didChangeDependencies();
+    global.count.addListener(() {
+      setState(() {
+        count.value = global.count.value;
+      });
+    });
+
+  }
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: _appbar[global.selectedIndex] as PreferredSizeWidget?,
-      body: screens[global.selectedIndex],
+      appBar: _appbar[count.value] as PreferredSizeWidget?,
+      body: screens[count.value],
       bottomNavigationBar: ResponsiveNavigationBar(
         outerPadding: EdgeInsets.fromLTRB(20, 5, 20, 20),
-        selectedIndex: global.selectedIndex,
+        selectedIndex: count.value,
         // onTabChange: _onItemTapped,
         onTabChange: (value) {
           setState(() {
-            global.selectedIndex = value;
+            count.value= value;
           });
         },
         

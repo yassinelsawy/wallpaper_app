@@ -5,8 +5,7 @@ import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:fontresoft/fontresoft.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
-import 'package:wallpaper_app/categoryscreen.dart';
-import 'package:wallpaper_app/global.dart' as global;
+import 'global.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -71,12 +70,12 @@ class _HomeScreenState extends State<HomeScreen> {
                     onTap: (
                     ) {
                       setState(() {
-                        global.selectedIndex = 1;
+                        count.value = 1;
                       });
                       // Navigator.push(context, MaterialPageRoute(builder: (context) => const CategoryScreen()));
-                      Navigator.pushAndRemoveUntil(context, 
-                      MaterialPageRoute(builder: (context) => const CategoryScreen())
-                      , (route) => false);
+                      // Navigator.pushAndRemoveUntil(context, 
+                      // MaterialPageRoute(builder: (context) => const CategoryScreen())
+                      // , (route) => false);
                     },
                     child: Text(
                       'View All',
