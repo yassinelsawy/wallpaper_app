@@ -17,7 +17,7 @@ import 'package:wallpaper_app/global.dart' as global;
 
 import 'global.dart';
 class HomePage extends StatefulWidget {
-  const HomePage();
+  const HomePage({super.key});
 
   @override
   State<HomePage> createState() => _HomePageState();
